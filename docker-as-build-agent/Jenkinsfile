@@ -1,18 +1,31 @@
 pipeline {
-  agent {
-      dockerfile true
-      // Tentukan path ke Dockerfile yang diinginkan
-      args '-f Dockerfile1'  // Misalnya ingin menggunakan Dockerfile1
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh '''
-          node --version
-          git --version
-          curl --version
-        '''
-      }
+    agent none  // Tidak ada agen default di tingkat pipeline
+    
+    stages {
+        stage('Build') {
+            agent {
+                dockerfile true
+                args '-f Dockerfile.node'  // Gunakan Dockerfile.node untuk build stage
+            }
+            steps {
+                sh '''
+                    node --version
+                    git --version
+                '''
+            }
+        }
+        
+        stage('Test') {
+            agent {
+                dockerfile true
+                args '-f Dockerfile.node'  // Gunakan Dockerfile.node untuk build stage
+            }
+            steps {
+                sh '''
+                    curl --version
+                    npm --version
+                '''
+            }
+        }
     }
-  }
 }
