@@ -2,7 +2,7 @@ pipeline {
   agent {
       dockerfile true
       // Tentukan path ke Dockerfile yang diinginkan
-      args '-f Dockerfile.node'  // Dockerfile node agent
+      args '-f Dockerfile1'  // Misalnya ingin menggunakan Dockerfile1
   }
   stages {
     stage('Test') {
