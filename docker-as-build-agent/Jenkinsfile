@@ -6,7 +6,7 @@ pipeline {
             agent {
                 dockerfile {
                     // Tentukan path Dockerfile di sini
-                    filename 'Dockerfile.node'
+                    filename 'Dockerfile1'
                 }
             }
             steps {
@@ -21,7 +21,7 @@ pipeline {
             agent {
                 dockerfile {
                     // Tentukan path Dockerfile di sini
-                    filename 'Dockerfile.node'
+                    filename 'Dockerfile1'
                 }
             }
             steps {
